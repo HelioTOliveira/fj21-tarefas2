@@ -10,10 +10,10 @@
 	<body>
 		<script type="text/javascript">
 				function finalizaAgora(id) {
-					$.post("finalizaTarefa", {'id' : id}, function() {
+					$.post("finalizaTarefa", {'id' : id}, function(resposta) {
 					// selecionando o elemento html através da
 					// ID e alterando o HTML dele
-					$("#tarefa_"+id).html("Finalizado");
+					$("#tarefa_"+id).html(resposta);
 					});
 				}
 			</script>
@@ -28,13 +28,13 @@
 				<th> Data de finalização</th>
 			</tr>
 			<c:forEach items="${tarefas}" var="tarefa">
-				<tr>
+				<tr id="tarefa_${tarefa.id}">
 					<td>${tarefa.id}</td>
 					<td>${tarefa.descricao}</td>
 					<c:if test="${tarefa.finalizado eq false}">
-						<td id="tarefa_${tarefa.id}">
+						<td>
 							<a href="#" onclick="finalizaAgora(${tarefa.id})">
-								Finaliza agora!
+								Finalizar
 							</a>
 						</td>
 					</c:if>
