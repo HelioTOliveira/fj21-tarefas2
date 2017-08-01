@@ -5,24 +5,24 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-//import br.com.caelum.tarefas.ConnectionFactory;
+import br.com.caelum.tarefas.ConnectionFactory;
 import br.com.caelum.tarefas.modelo.Usuario;
 
 public class JdbcUsuarioDao {
 	private Connection connection;
 
 	public JdbcUsuarioDao() {
-//		try {
-//			//connection = new ConnectionFactory().getConnection();
-//		} catch (SQLException e) {
-//			throw new RuntimeException(e);
-//		}
+		try {
+			  this.connection = ConnectionFactory.getConnection();
+	} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public boolean existeUsuario(Usuario usuario) {
 
 		if (usuario == null) {
-			throw new IllegalArgumentException("Usu√°rio n√£o deve ser nulo");
+			throw new IllegalArgumentException("Usu·rio n„o deve ser nulo");
 		}
 
 		try {
