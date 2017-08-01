@@ -129,7 +129,7 @@ public class JdbcTarefaDao {
 	public void finaliza(Long id) {
 
 		if (id == null) {
-			throw new IllegalStateException("Id da tarefa n√£o deve ser nula.");
+			throw new IllegalStateException("Id da tarefa n„o deve ser nula.");
 		}
 
 		String sql = "update tarefas set finalizado = ?, dataFinalizacao = ? where id = ?";
