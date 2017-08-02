@@ -21,4 +21,10 @@
 		<property name="suffix" value=".jsp" />		
 	</bean>	
 	<mvc:default-servlet-handler/> 
+	
+	<!-- Registro de interceptador para vedrificar se o usuário esta logado usando o spring-->
+	<mvc:interceptors>
+		<bean class="br.com.caelum.tarefas.interceptor.AutorizadorInterceptor"/>
+	</mvc:interceptors>
+	
 </beans>
