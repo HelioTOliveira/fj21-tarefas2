@@ -9,27 +9,24 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.com.caelum.tarefas.ConnectionFactory;
 import br.com.caelum.tarefas.modelo.Tarefa;
 
 @Repository
-public class JdbcTarefaDao {
-	private  Connection connection;
+public class JdbcTarefaDao {	
+	private final Connection connection;
 	
 	@Autowired
-	public JdbcTarefaDao() {
+	public JdbcTarefaDao(DataSource dataSource) {
 		try {
-			this.connection = ConnectionFactory.getConnection();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			connection = null;
-		}
-		
+			this.connection = dataSource.getConnection();
+		} catch (SQLException e) {					
+			throw new RuntimeException(e);
+		}		
 	}
 
 	public void adiciona(Tarefa tarefa) {
