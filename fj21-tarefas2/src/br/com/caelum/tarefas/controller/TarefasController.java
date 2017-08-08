@@ -4,23 +4,26 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.caelum.tarefas.dao.JdbcTarefaDao;
+import br.com.caelum.tarefas.dao.TarefaDao;
 import br.com.caelum.tarefas.modelo.Tarefa;
 
+@Transactional
 @Controller
 public class TarefasController {
 
-	private final JdbcTarefaDao dao;
-	
 	@Autowired
-	public TarefasController(JdbcTarefaDao dao) {
-		// TODO Auto-generated constructor stub
-		this.dao = dao;
-	}
+	TarefaDao dao;
+	
+//	@Autowired
+//	public TarefasController(JdbcTarefaDao dao) {
+//		// TODO Auto-generated constructor stub
+//		this.dao = dao;
+//	}
 	
 	@RequestMapping("novaTarefa")
 	public String form(){
